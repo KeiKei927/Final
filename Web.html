@@ -1,20 +1,43 @@
-<!DOCTYPE html>
-<html>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "lcWxOinJBUuyL-C0M",
+      });
+   })();
+</script>
+
 <head>
   <title>Reservation Page</title>
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    (function(){
-      emailjs.init("lcWxOinJBUuyL-C0M");
-    })();
-  </script>
 </head>
-<body>
-
 
 <body>
+  <style>
+    body {
+      background-image: url('background.jpg'); 
+      background-size: cover;
+      background-position: center;
+    }
 
-  <h1>Make a Reservation</h1>   
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      background-color: rgba(255, 255, 255, 0.5); 
+      width: 300px;
+      margin: 0 auto;
+      color: black;
+    }
+
+    input, button {
+      width: 100%;
+    }
+  </style>
+  
+  <h1>Make a Reservation</h1>
 
   <form>
     <label for="name">Name:</label><br>
@@ -32,21 +55,8 @@
     <label for="time">Time:</label><br>
     <input type="time" id="time"><br><br>
 
-    <button type="submit" onclick="sendMail">Submit</button>
+    <button type="button" class="btn" onclick="sendEmail()">Submit</button>
   </form>
-
-  <script>
-    document.getElementById('reservation-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      emailjs.sendForm('service_21cqpgr', 'template_rxj4nsl', this)
-        .then(function() {
-          alert('Reservation Sent!');
-        }, function(error) {
-          alert('FAILED...', error);
-        });
-    });
-  </script>
-
+  <script type="text/javascript" src="send_email.js"></script>
 </body>
-</html>
+
